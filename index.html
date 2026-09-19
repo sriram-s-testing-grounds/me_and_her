@@ -1,96 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sriram & Joshi - 5 Months</title>
+    <!-- Crisp, modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Epilogue:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Bright, Happy Color Palette */
+        :root {
+            --bg-color: #faf8f5;
+            --text-main: #1a1a1a;
+            --accent-coral: #ff6b6b;
+            --accent-yellow: #feca57;
+            --accent-mint: #1dd1a1;
+            --border-color: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Epilogue', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Three.js Canvas Container */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.65;
+        }
+
+        /* Layout & Spacing */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 6rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            align-items: flex-start;
+            border-bottom: 4px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 8rem;
+            line-height: 0.9;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            text-shadow: 6px 6px 0px var(--accent-yellow);
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            max-width: 650px;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: 1rem 2rem;
+            border-radius: 0; 
+            z-index: 2;
+        }
+
+        /* Timeline / Story Section */
+        .timeline-section {
+            border-bottom: 4px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            display: inline-block;
+            border-bottom: 8px solid var(--accent-coral);
+            background-color: var(--bg-color);
+            padding-right: 1rem;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Interactive Flip Cards */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            height: 450px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 3px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .flip-card-front {
+            background-color: #fff;
+            box-shadow: 12px 12px 0px var(--border-color);
+        }
+
+        .flip-card-front h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-coral);
+        }
+
+        .flip-card-front p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .flip-card-front .hint {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .flip-card-back {
+            background-color: var(--accent-mint);
+            transform: rotateY(180deg);
+            box-shadow: -12px 12px 0px var(--border-color);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .flip-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back span {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            position: absolute;
+            z-index: 0;
+        }
+
+        /* Massive Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            border: 3px solid var(--border-color);
+            position: relative;
+            background-color: var(--accent-yellow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 8px 8px 0px var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 16px 16px 0px var(--border-color);
+        }
+
+        .gallery-item:nth-child(even) {
+            background-color: var(--accent-coral);
+        }
+        
+        .gallery-item:nth-child(3n) {
+            background-color: var(--accent-mint);
+        }
+
+        .gallery-item span {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            z-index: 1;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 0;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border-top: 4px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bright Interactive WebGL Background -->
+    <div id="canvas-container"></div>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>HAPPY<br>5 MONTH ANNIVERSARY<br>JOSHI!!!!</h1>
+            <p>Holy shit, it has already been five whole months. Time goes by so fast, doesn't it? :)</p>
+        </section>
+
+        <!-- Interactive Timeline Section -->
+        <section class="timeline-section">
+            <h2 class="section-title">The Story So Far</h2>
+            <div class="timeline-grid">
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Our First Date</h3>
+                            <p>Nanganallur metro. I saw you with my own eyes, for the first time.</p>
+                            <div class="hint">Hover to reveal</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/flip/IMG-20260519-WA0028.jpg" alt="" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" style="margin-top: 4rem;">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front" style="box-shadow: 12px 12px 0px var(--accent-yellow);">
+                            <h3>Chapter Two</h3>
+                            <p>Travelled Fifty kilometers to meet you at your apartments for the first time. No regrets btw 😛</p>
+                            <div class="hint">Hover to reveal</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/flip/IMG_20260608_121420349.jpg" alt="" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front" style="box-shadow: 12px 12px 0px var(--accent-mint);">
+                            <h3>Chapter Three</h3>
+                            <p>First time travelled solo from Trichy to meet you! Such a nice experience, even though I have lots of regrets about my actions.</p>
+                            <div class="hint">Hover to reveal</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/flip/IMG-20260805-WA0048.jpg" alt="" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" style="margin-top: 4rem;">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front" style="box-shadow: 12px 12px 0px var(--accent-coral);">
+                            <h3>Chapter 4</h3>
+                            <p>Finally entered your college for TechnoVIT, and yeah, it was fun as hell roaming around the campus (pretty small) and having our moments. Thank you for being you Joshi.</p>
+                            <div class="hint">Hover to reveal</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/flip/IMG_20260904_164716095.jpg" alt="" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="section-title">The Vault</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: 500; background-color: var(--bg-color); display: inline-block;">A collection of our favorite snapshots together.</p>
+            
+            <div class="gallery-grid">
+                <!-- 8 Image Placeholders -->
+                <div class="gallery-item"><span>Pic 5</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 6</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 7</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 8</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 9</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 10</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 11</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><span>Pic 12</span><img src="images/vault/" alt="" onerror="this.style.display='none'"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        MADE WITH LOVE BY SRIRAM.
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script>
+        // Three.js Scene Setup 
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#faf8f5'); 
+        
+        // Camera Setup
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 40;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(10, 20, 10);
+        scene.add(directionalLight);
+
+        // Raycaster Setup for Mouse Interaction
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        
+        window.addEventListener('mousemove', (event) => {
+            // Calculate mouse position in normalized device coordinates (-1 to +1)
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Sharp Geometric Shapes Array
+        const shapes = [];
+        const geometries = [
+            new THREE.BoxGeometry(2, 2, 2),
+            new THREE.OctahedronGeometry(1.5, 0),
+            new THREE.TetrahedronGeometry(1.5, 0) 
+        ];
+
+        const colors = [0xff6b6b, 0xfeca57, 0x1dd1a1];
+        const objectCount = 45;
+
+        for(let i = 0; i < objectCount; i++) {
+            const randomGeo = geometries[Math.floor(Math.random() * geometries.length)];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const material = new THREE.MeshStandardMaterial({ 
+                color: randomColor,
+                roughness: 0.4,
+                metalness: 0.1,
+                flatShading: true 
+            });
+
+            const mesh = new THREE.Mesh(randomGeo, material);
+
+            mesh.position.x = (Math.random() - 0.5) * 80;
+            mesh.position.y = (Math.random() - 0.5) * 80;
+            mesh.position.z = (Math.random() - 0.5) * 30 - 10;
+
+            mesh.rotation.x = Math.random() * Math.PI;
+            mesh.rotation.y = Math.random() * Math.PI;
+
+            // Store original scale and rotation speeds
+            mesh.userData = {
+                rotSpeedX: (Math.random() - 0.5) * 0.02,
+                rotSpeedY: (Math.random() - 0.5) * 0.02,
+                floatSpeed: (Math.random() * 0.01) + 0.005,
+                floatOffset: Math.random() * Math.PI * 2,
+                targetScale: 1
+            };
+
+            shapes.push(mesh);
+            scene.add(mesh);
+        }
+
+        // Scrolling Interaction Logic
+        let scrollY = 0;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Raycasting logic for hover effects
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(shapes);
+
+            // Reset target scale for all shapes
+            shapes.forEach(shape => shape.userData.targetScale = 1);
+
+            // Apply interaction to hovered shapes
+            for (let i = 0; i < intersects.length; i++) {
+                const object = intersects[i].object;
+                object.userData.targetScale = 1.8; // Expand when hovered
+                object.rotation.x += 0.05; // Spin faster when hovered
+                object.rotation.y += 0.05;
+            }
+
+            // Animate each shape and apply smooth scaling
+            shapes.forEach((shape) => {
+                shape.rotation.x += shape.userData.rotSpeedX;
+                shape.rotation.y += shape.userData.rotSpeedY;
+                shape.position.y += Math.sin(elapsedTime * 2 + shape.userData.floatOffset) * 0.02;
+                
+                // Smoothly lerp scale toward target scale
+                const currentScale = shape.scale.x;
+                const newScale = currentScale + (shape.userData.targetScale - currentScale) * 0.1;
+                shape.scale.set(newScale, newScale, newScale);
+            });
+
+            // Parallax scroll effect
+            camera.position.y = -scrollY * 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Responsive Resizing
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
 </html>
